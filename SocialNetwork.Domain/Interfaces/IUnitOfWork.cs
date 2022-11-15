@@ -1,0 +1,9 @@
+﻿using SocialNetwork.Domain.Entity;
+
+namespace SocialNetwork.Domain.Interfaces
+{
+	public interface IUnitOfWork
+	{
+		public IRepository<User> UserRepository { get; }
+	}
+}
