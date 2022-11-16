@@ -9,7 +9,8 @@ namespace SocialNetwork.Domain.Interfaces
 		Task Delete(Guid id);
 		Task<T> GetById(Guid id);
 		Task<List<T>> GetAll();
-		Task<List<T>> Find(Expression<Func<T, bool>> expression);
+		Task<T> Find(Expression<Func<T, bool>> expression);
+		Task<List<T>> FindAll(Expression<Func<T, bool>> expression);
 		Task Save();
 	}
 }

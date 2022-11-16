@@ -23,11 +23,16 @@ namespace SocialNetwork.Infrastructure.Data.Repositories
 			_table.Remove(entity);
 			await Save();
 		}
-		public async Task<List<T>> Find(Expression<Func<T, bool>> expression) =>
+		public async Task<List<T>> FindAll(Expression<Func<T, bool>> expression) =>
 			await _table
 				.AsQueryable()
 				.Where(expression)
 				.ToListAsync();
+		public async Task<T> Find(Expression<Func<T, bool>> expression) =>
+			await _table
+				.AsQueryable()
+				.Where(expression)
+				.FirstOrDefaultAsync();
 		public async Task<List<T>> GetAll() => 
 			await _table
 				.AsQueryable()
