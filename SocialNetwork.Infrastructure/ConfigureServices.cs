@@ -15,6 +15,17 @@ namespace SocialNetwork.Infrastructure
 			this IServiceCollection services,
 			IConfiguration configuration)
 		{
+			services.AddCors(options =>
+			{
+				options.AddPolicy(name: "All",
+					policy =>
+					{
+						policy
+							.AllowAnyOrigin()
+							.AllowAnyMethod()
+							.AllowAnyHeader();
+					});
+			});
 			services.AddEntityFrameworkNpgsql()
 				.AddDbContext<ApplicationContext>(options =>
 					options.UseNpgsql(configuration["DefaultConnection"])
@@ -39,6 +50,7 @@ namespace SocialNetwork.Infrastructure
 					};
 				});
 			services.AddAuthorization();
+			
 			return services;
 		}
 	}

@@ -12,6 +12,7 @@ builder.Services.AddInfrastructure(builder.Configuration);
 
 var app = builder.Build();
 
+
 if (app.Environment.IsDevelopment())
 {
 	app.UseSwagger();
@@ -19,10 +20,12 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("All");
+//app.UseRouting();
 
 app.UseAuthentication();
 app.UseAuthorization();
 
-app.MapControllers();
+app.MapControllers().RequireCors("All");
 
 app.Run();

@@ -12,11 +12,14 @@ namespace SocialNetwork.Server.Controllers
 	public class UserController : ControllerBase
 	{
 		IUserService _userService;
+		IUploadService _uploadService;
 
 		public UserController(
-			IUserService userService)
+			IUserService userService,
+			IUploadService uploadService)
 		{
 			_userService = userService;
+			_uploadService = uploadService;
 		}
 		[HttpGet("user")]
 		public async Task<IActionResult> GetUserById(Guid id)
@@ -29,13 +32,18 @@ namespace SocialNetwork.Server.Controllers
 			await _userService.Create(user);
 			return Ok("penis died");
 		}
-		
 		[HttpGet("getall")]
 		public async Task<IActionResult> GetUsers()
 		{
 			return Ok(await _userService.GetAll());
 		}
-
+		[HttpPost("uploadimage")]
+		public async Task<IActionResult> UploadImage(IFormFile image)
+		{
+			Guid id = Guid.NewGuid();
+			await _uploadService.Upload(image, id);
+			return Ok(id);
+		}
 		[HttpPost("login")]
 		[AllowAnonymous]
 		public async Task<IActionResult> Login(UserViewModel model)

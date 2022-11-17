@@ -42,6 +42,7 @@ namespace SocialNetwork.Server.Services
 		public async Task Update(User model)
 		{
 			await _unitOfWork.UserRepository.Update(model);
+			await _unitOfWork.UserRepository.Save();
 		}
 		public async Task<User> GetById(Guid id)
 		{

@@ -1,20 +1,20 @@
 <template>
     <div class="home">
-        <h1>{{ msg }}</h1>
-        <p>Welcome to your new single-page application, built with <a href="https://vuejs.org" target="_blank">Vue.js</a>.</p>
+        <UploadImage></UploadImage>
     </div>
 </template>
 
 <script>
+    import UploadImage from './UploadImage.vue';
     export default {
         name: 'Home',
-        props: {
-            msg: String
+        props: {},
+        components: {
+            UploadImage
         }
     };
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 </style>
 
