@@ -17,10 +17,6 @@ namespace SocialNetwork.Server.Services
 		IMapper _mapper;
 		IConfiguration _configuration;
 
-		// TODO : model > viewmodel
-		// TODO : unit tests
-		// TODO : exceptions
-
 		public UserService(
 			IUnitOfWork unitOfWork,
 			IMapper mapper,

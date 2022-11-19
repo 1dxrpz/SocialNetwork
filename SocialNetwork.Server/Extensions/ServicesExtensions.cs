@@ -11,6 +11,7 @@ namespace SocialNetwork.Server.Extensions
 		{
 			services.AddScoped<IUnitOfWork, UnitOfWork>();
 			services.AddScoped<IUserService, UserService>();
+			services.AddScoped<IFriendService, FriendService>();
 			services.AddScoped<IUploadService, UploadService>();
 			return services;
 		}

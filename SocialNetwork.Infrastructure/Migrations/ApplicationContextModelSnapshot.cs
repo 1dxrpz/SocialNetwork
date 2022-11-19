@@ -22,6 +22,26 @@ namespace SocialNetwork.Infrastructure.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
+            modelBuilder.Entity("SocialNetwork.Domain.Entity.Friend", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<Guid>("FriendId")
+                        .HasColumnType("uuid");
+
+                    b.Property<int>("RelationType")
+                        .HasColumnType("integer");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Friends");
+                });
+
             modelBuilder.Entity("SocialNetwork.Domain.Entity.User", b =>
                 {
                     b.Property<Guid>("Id")

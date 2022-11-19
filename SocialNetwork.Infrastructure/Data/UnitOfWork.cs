@@ -9,10 +9,15 @@ namespace SocialNetwork.Infrastructure.Data
 	{
 		readonly ApplicationContext _db;
 		Repository<User> _userRepository;
+		Repository<Friend> _friendRepository;
 
 		public IRepository<User> UserRepository
 		{
 			get => _userRepository ??= new Repository<User>(_db);
+		}
+		public IRepository<Friend> FriendRepository
+		{
+			get => _friendRepository ??= new Repository<Friend>(_db);
 		}
 
 		public UnitOfWork(ApplicationContext db)

@@ -14,8 +14,10 @@
             onUpload() {
                 const formData = new FormData();
                 formData.append('image', this.selectedFile)
+
+                console.log(formData);
                 this.$axios
-                    .post('api/User/uploadimage', formData, {
+                    .post('api/Files/uploadimage', formData, {
                         onUploadProgress: event => {
                             console.log(Math.round(event.loaded / event.total) * 100);
                         }
