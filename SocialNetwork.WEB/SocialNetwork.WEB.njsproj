@@ -29,12 +29,31 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include=".eslint.yml" />
+    <Content Include="libman.json" />
     <Content Include="public\favicon.ico" />
     <Content Include="public\index.html" />
     <Content Include="src\App.vue" />
-    <Content Include="src\components\Home.vue" />
     <Content Include="package.json" />
     <Content Include="README.md" />
+    <Content Include="src\layouts\AccountLayout.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\layouts\MainLayout.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\router.js">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\Account\Account.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\Account\Messages.vue">
+      <SubType>Code</SubType>
+    </Content>
+    <Content Include="src\views\Main\Home.vue">
+      <SubType>Code</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="dist\" />
@@ -42,6 +61,10 @@
     <Folder Include="src\" />
     <Folder Include="src\assets\" />
     <Folder Include="src\components\" />
+    <Folder Include="src\layouts\" />
+    <Folder Include="src\views\" />
+    <Folder Include="src\views\Account\" />
+    <Folder Include="src\views\Main\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="babel.config.js" />

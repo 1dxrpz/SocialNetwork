@@ -10,6 +10,7 @@ namespace SocialNetwork.Infrastructure.Data
 		readonly ApplicationContext _db;
 		Repository<User> _userRepository;
 		Repository<Friend> _friendRepository;
+		Repository<Article> _articleRepository;
 
 		public IRepository<User> UserRepository
 		{
@@ -19,12 +20,15 @@ namespace SocialNetwork.Infrastructure.Data
 		{
 			get => _friendRepository ??= new Repository<Friend>(_db);
 		}
+		public IRepository<Article> ArticleRepository
+		{
+			get => _articleRepository ??= new Repository<Article>(_db);
+		}
 
 		public UnitOfWork(ApplicationContext db)
 		{
 			_db = db;
 		}
-
 
 		private bool disposed = false;
 		protected virtual void Dispose(bool disposing)

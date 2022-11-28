@@ -1,23 +1,40 @@
-<template>
+﻿<template>
     <div id="app">
-        <Home msg="Hello world!" />
-        <img src="https://localhost:7004/api/Files/getimage?id=922c08be-0589-4174-891b-cd249d6c1ad2" alt="." />
+        <!--
+            <Home msg="Hello world!"></Home>
+            <vue-markdown>i am a ~~test~~ **test**.</vue-markdown>
+            <UploadImage></UploadImage>
+        -->
+        <component :is="layout">
+            <router-view />
+        </component>
     </div>
 </template>
 
 <script>
-    import Home from './components/Home.vue';
-    import axios from 'axios';
+    //import axios from 'axios';
+    //import UploadImage from './components/UploadImage.vue';
+    //import VueMarkdown from 'vue-markdown';
+    //axios.defaults.baseURL = 'https//localhost:7004';
 
-    axios.defaults.baseURL = 'https//localhost:7004';
+    import MainLayout from '@/layouts/MainLayout.vue';
+    import AccountLayout from '@/layouts/AccountLayout.vue';
+
     export default {
         name: 'app',
+        computed: {
+            layout() {
+                return (this.$route.meta.layout || "Main") + '-layout';
+            }
+        },
         components: {
-            Home
-        }
+            //VueMarkdown,
+            //UploadImage,
+            MainLayout,
+            AccountLayout
+        },
     };
 </script>
 
 <style>
 </style>
-

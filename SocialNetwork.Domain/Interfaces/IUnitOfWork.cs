@@ -6,5 +6,6 @@ namespace SocialNetwork.Domain.Interfaces
 	{
 		public IRepository<User> UserRepository { get; }
 		public IRepository<Friend> FriendRepository { get; }
+		public IRepository<Article> ArticleRepository { get; }
 	}
 }

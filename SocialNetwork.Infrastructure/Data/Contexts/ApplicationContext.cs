@@ -7,6 +7,7 @@ namespace SocialNetwork.Infrastructure.Data.Contexts
 	{
 		DbSet<User> Users { get; set; }
 		DbSet<Friend> Friends { get; set; }
+		DbSet<Article> Articles { get; set; }
 		public ApplicationContext(DbContextOptions<ApplicationContext> options)
 			: base(options)
 		{

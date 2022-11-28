@@ -11,13 +11,11 @@ namespace SocialNetwork.Server.Controllers
 	public class FriendsController : ControllerBase
 	{
 		IFriendService _friendService;
-		IUserService _userService;
 
 		public FriendsController(
-			IFriendService friendService, IUserService userService)
+			IFriendService friendService)
 		{
 			_friendService = friendService;
-			_userService = userService;
 		}
 
 		[HttpGet("friends")]
@@ -25,13 +23,32 @@ namespace SocialNetwork.Server.Controllers
 		{
 			var friends = await _friendService
 				.FindAll(v => v.UserId == userId && v.RelationType == RelationType.ActualFriend);
+			return Ok(friends.Select(friend => friend.FriendId).ToList());
+		}
+		[HttpGet("friendspage")]
+		public async Task<IActionResult> GetFriendsPage(Guid userId, int page)
+		{
+			var friends = await _friendService
+				.FindAll(v => v.UserId == userId && v.RelationType == RelationType.ActualFriend);
+			friends
+				.Select(friend => friend.FriendId)
+				.Skip((page - 1) * 10)
+				.Take(10)
+				.ToList();
 			return Ok(friends);
 		}
-		[HttpGet("friendrequests")]
-		public async Task<IActionResult> GetFriendRequests(Guid userId)
+		[HttpGet("outcomerequests")]
+		public async Task<IActionResult> GetOutcomeRequests(Guid userId)
 		{
 			var requests = await _friendService
 				.FindAll(v => v.UserId == userId && v.RelationType == RelationType.FriendRequest);
+			return Ok(requests);
+		}
+		[HttpGet("incomerequests")]
+		public async Task<IActionResult> GetIncomeRequests(Guid userId)
+		{
+			var requests = await _friendService
+				.FindAll(v => v.FriendId == userId && v.RelationType == RelationType.FriendRequest);
 			return Ok(requests);
 		}
 		[HttpPost("addfriend")]

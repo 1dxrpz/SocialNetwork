@@ -28,6 +28,11 @@ namespace SocialNetwork.Server.Controllers
 		{
 			return Ok(await _userService.GetAll());
 		}
+		//[HttpGet("changeprofile")]
+		//public async Task<IActionResult> ChangeProfile(UserViewModel user)
+		//{
+		//	return Ok(await _userService.GetAll());
+		//}
 		[HttpPost("login")]
 		[AllowAnonymous]
 		public async Task<IActionResult> Login(UserViewModel model)
